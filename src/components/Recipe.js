@@ -1,7 +1,9 @@
 import React from 'react';
 import style from './recipe.module.css';
+import EditCommentItemForm from './EditCommentItemForm'
 
-const Recipe = ({title,totalTime,image,ingredients}) => {
+
+const Recipe = ({title,image,ingredients,url}) => {
     return(
         <div className={style.recipe}>
             <h1>{title}</h1>
@@ -10,10 +12,15 @@ const Recipe = ({title,totalTime,image,ingredients}) => {
                     <li>{ingredient.text}</li>
                 ))}
             </ol>
-            <p>{totalTime}</p>
+            <a href={url}>{title}</a>
             <img className={style.image} src={image} alt=""/>
+            <EditCommentItemForm />
+
         </div>
-    );
+       
+
+
+    )
 }
 
 export default Recipe;

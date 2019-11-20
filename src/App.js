@@ -1,29 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import Recipe from './Recipe';
+import Recipe from './components/Recipe';
+import recipeAPI from './api/recipeAPI'
+
 
 
 const App = () => {
 
-  const APP_ID = "290c1eea";
-  const APP_KEY = "61048d368ed07b137a7ef340f0b5d158";
-
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState('');
-  const [query, setQuery] = useState('chicken')
+  const [query, setQuery] = useState('')
+
+  const fetchRecipes = async (query) => {
+    const data = await recipeAPI.getRecipes(query)
+    console.log(data.hits)
+    setRecipes(data.hits)
+  }
 
   useEffect(() => {
-   getRecipes();
-  }, [query]);
+    if (query && search === '') {
+      fetchRecipes(query)
+      
+    }
+  }, [query, search])
 
-  const getRecipes = async () => {
-    const response = await fetch(
-      `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
-      );
-    const data = await response.json();
-    setRecipes(data.hits);
-    console.log(data.hits);
-  };
 
   const updateSearch = e => {
     setSearch(e.target.value);
@@ -35,33 +35,34 @@ const App = () => {
     setSearch('');
   }
 
-    return (
-      <div className="App">
-        <form onSubmit={getSearch} className="search-form">
-          <input 
-            className="search-bar" 
-            type="text" 
-            value={search} 
-            onChange={updateSearch}
-          />
-          <button className="search-button" type="submit">
-            Search
+  return (
+    <div className="App">
+      <h1 align="center">Enter What Is In Your Fridge</h1>
+      <form onSubmit={getSearch} className="search-form">
+        <input
+          className="search-bar"
+          type="text"
+          value={search}
+          onChange={updateSearch}
+        />
+        <button className="search-button" type="submit">
+          Search
           </button>
-        </form>
-        <div className="recipes">
-        {recipes.map(recipe =>(
+      </form>
+      <div className="recipes">
+        {recipes.map(recipe => (
           <Recipe
             key={recipe.recipe.label}
-            title={recipe.recipe.label} 
-            totalTime={recipe.recipe.totalTime}
+            title={recipe.recipe.label}
             image={recipe.recipe.image}
             ingredients={recipe.recipe.ingredients}
-          />
+            url={recipe.recipe.url}
+            />
         ))}
-        </div>
       </div>
-    );
-  };
+    </div>
+  );
+};
 
 
 export default App;

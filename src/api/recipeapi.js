@@ -1,20 +1,14 @@
+const APP_ID = "290c1eea";
+const APP_KEY = "61048d368ed07b137a7ef340f0b5d158";
 
-function getRecipeAPI = (query) => { 
-  fetch("https://api.spoonacular.com/recipes/findByIngredients", {
-    "method": "GET",
-    "headers": {
-      Content-Type : application/json,
-      API: "7e365ba77e7f4c079421b30b63b47427",
-    }
-  })
-    .then(response => {
-      console.log(response);
-    })
-    .catch(err => {
-      console.log(err);
-    })
-}
-  
+const getRecipes = async (query) => {
+    const response = await fetch(
+      `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
+      );
+    const data = await response.json();
+    return data
+  };
+
 export default {
-  searchRecipes: searchRecipes,
+    getRecipes: getRecipes
 }
