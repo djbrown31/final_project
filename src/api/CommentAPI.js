@@ -4,7 +4,7 @@ const fetchCommentByID = (commentID) => {
   }
   
   const fetchComments = () => {
-    return fetch(`https://cors-anywhere.herokuapp.com/https://magic-recipe-finder.herokuapp.com/comments`)
+    return fetch('https://cors-anywhere.herokuapp.com/https://magic-recipe-finder.herokuapp.com/comments')
       .then((response) => response.json())
   }
 

@@ -12,10 +12,10 @@ class AddCommentPage extends Component {
     event.preventDefault()
     const commentObject = {
       author: event.target.elements[0].value,
-      text: event.target.elements[2].value,
+      text: event.target.elements[1].value,
     }
     CommentAPI.addComment(commentObject)
-      .then((response) => { this.setState({ redirect: true }) })
+      .then((_response) => { this.setState({ redirect: true }) })
   }
 
   render() {

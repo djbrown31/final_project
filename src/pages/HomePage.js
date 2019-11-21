@@ -20,7 +20,7 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <h1> All Comments </h1>
+        <h1> Recipe Comments </h1>
         <CommentList comments={this.state.comments} />
       </div>
     )

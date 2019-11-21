@@ -44,13 +44,6 @@ const App = () => {
 
   return (
     <div className="App">
-      <BrowserRouter>
-          <div>
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/add-comment" component={AddCommentPage} />
-            <Route exact path="/comments/:commentID" component={CommentPage} />
-          </div>
-        </BrowserRouter>
       <h1 align="center">Enter What Is In Your Fridge</h1>
       <form onSubmit={getSearch} className="search-form">
         <input

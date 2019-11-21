@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './recipe.module.css';
-import EditCommentItemForm from '../pages/AddCommentPage'
+import AddCommentPage from '../pages/AddCommentPage';
+import HomePage from '../pages/HomePage'
 
 
 const Recipe = ({title,image,ingredients,url}) => {
@@ -14,7 +15,9 @@ const Recipe = ({title,image,ingredients,url}) => {
             </ol>
             <a href={url}>{title}</a>
             <img className={style.image} src={image} alt=""/>
-            <EditCommentItemForm />
+            <HomePage />
+            <AddCommentPage />
+            
 
         </div>
        
