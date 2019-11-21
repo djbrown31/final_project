@@ -9,6 +9,8 @@ const getRecipes = async (query) => {
     return data
   };
 
+  
+
 export default {
     getRecipes: getRecipes
 }

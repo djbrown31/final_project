@@ -1,7 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom'
 import './App.css';
 import Recipe from './components/Recipe';
-import recipeAPI from './api/recipeAPI'
+import recipeAPI from './api/recipeAPI';
+import HomePage from './pages/HomePage.js';
+import CommentPage from './pages/CommentPage.js';
+import AddCommentPage from './pages/AddCommentPage.js';
+
 
 
 
@@ -10,6 +15,8 @@ const App = () => {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState('');
   const [query, setQuery] = useState('')
+  
+
 
   const fetchRecipes = async (query) => {
     const data = await recipeAPI.getRecipes(query)
@@ -37,6 +44,13 @@ const App = () => {
 
   return (
     <div className="App">
+      <BrowserRouter>
+          <div>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/add-comment" component={AddCommentPage} />
+            <Route exact path="/comments/:commentID" component={CommentPage} />
+          </div>
+        </BrowserRouter>
       <h1 align="center">Enter What Is In Your Fridge</h1>
       <form onSubmit={getSearch} className="search-form">
         <input
@@ -66,3 +80,6 @@ const App = () => {
 
 
 export default App;
+ 
+
+

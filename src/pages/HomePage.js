@@ -1,30 +1,30 @@
-// import React, { Component } from 'react'
-// import Recipe from '../components/recipes.js'
-// import searchRecipes from '../api/recipeapi.js'
+import React, { Component } from 'react'
+import CommentAPI from '../api/CommentAPI'
+import CommentList from '../components/CommentList'
 
-// class HomePage extends Component {
-//   state = {
-//     recipes: []
-//   }
+class HomePage extends Component {
+    state = {
+        comments: []
+      }
+    
+      componentDidMount(){
+        CommentAPI.fetchComments()
+          .then((apiResponseJSON) => {
+            this.setState({
+              comments: apiResponseJSON
+            })
+          }
+        )
+      }
 
-//   componentDidMount(){
-//     searchRecipes.searchRecipes()
-//       .then((apiResponseJSON) => {
-//         this.setState({
-//           recipes: apiResponseJSON
-//         })
-//       }
-//     )
-//   }
+  render() {
+    return (
+      <div>
+        <h1> All Comments </h1>
+        <CommentList comments={this.state.comments} />
+      </div>
+    )
+  }
+}
 
-//   render() {
-//     return (
-//       <div>
-//         <h1> Search Recipes </h1>
-//         <Recipe recipes={this.state.recipes} />
-//       </div>
-//     )
-//   }
-// }
-
-// export default HomePage
+export default HomePage

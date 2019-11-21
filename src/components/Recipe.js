@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './recipe.module.css';
-import EditCommentItemForm from './EditCommentItemForm'
+import EditCommentItemForm from '../pages/AddCommentPage'
 
 
 const Recipe = ({title,image,ingredients,url}) => {
