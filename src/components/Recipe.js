@@ -2,6 +2,7 @@ import React from 'react';
 import style from './recipe.module.css';
 import AddCommentPage from '../pages/AddCommentPage';
 import HomePage from '../pages/HomePage'
+import DeleteCommentPage from '../pages/DeleteCommentPage';
 
 
 const Recipe = ({title,image,ingredients,url}) => {
@@ -17,6 +18,7 @@ const Recipe = ({title,image,ingredients,url}) => {
             <img className={style.image} src={image} alt=""/>
             <HomePage />
             <AddCommentPage />
+            <DeleteCommentPage />
             
 
         </div>

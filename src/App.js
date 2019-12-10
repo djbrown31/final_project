@@ -1,11 +1,11 @@
-import React, { useEffect, useState, Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+// import { BrowserRouter, Route } from 'react-router-dom'
 import './App.css';
 import Recipe from './components/Recipe';
 import recipeAPI from './api/recipeAPI';
-import HomePage from './pages/HomePage.js';
-import CommentPage from './pages/CommentPage.js';
-import AddCommentPage from './pages/AddCommentPage.js';
+// import HomePage from './pages/HomePage.js';
+// import CommentPage from './pages/CommentPage.js';
+// import AddCommentPage from './pages/AddCommentPage.js';
 
 
 
